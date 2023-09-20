@@ -1,7 +1,6 @@
-function ExerciseOne
-fs = 10000;
+function ExerciseTwo
+fs = 20000;
 t = 0:1/fs:0.15;
-%mt = zeros(length(t));
 index = 1;
 for i = 0:1/fs:0.15
     if (i <= 0.05)
@@ -13,16 +12,18 @@ for i = 0:1/fs:0.15
     end
     index = index + 1;
 end
-Mf = fftshift(fft(mt));
-n = length(mt) - 1;
-df = fs/n;
-f = -fs/2:df:fs/2;
+
+fc = 2000;
+Kf = 999;
+
+ut = fmmod(mt,fc,fs,Kf);
 
 figure(1)
-plot(t,mt);
-xlim([0 0.12])
+plot(t,ut);
+
+demod_ut = fmdemod(ut,fc,fs,Kf);
 
 figure(2)
-plot(f,abs(Mf)/(length(Mf) - 1));
-xlim([-800 800])
+plot(t,demod_ut);
+xlim([0 0.1])
 end
