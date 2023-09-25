@@ -32,7 +32,7 @@ xlabel("Time(s)")
 ylabel("m(t)")
 set(gca,'XLim',[0 0.2]);
 
-%Plot of the message signal in the frequency domain from -1000 <= f <= 1000
+
 figure(2)
 plot(f,abs(Mf)/n);
 title("Magnitude Spectrum of Message Signal in Frequency Domain")
