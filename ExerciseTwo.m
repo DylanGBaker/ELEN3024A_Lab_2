@@ -61,5 +61,4 @@ plot(f, unwrap(angle(modulated_signal_f)))
 title("Phase Spectrum of the Modulated Message Signal.")
 xlabel("Frequency(Hz)")
 ylabel("Phase of U(f)")
-set(gca,'XLim',[-5000 5000]);
 end
