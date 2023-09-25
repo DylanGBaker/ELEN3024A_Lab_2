@@ -17,20 +17,26 @@ Kf = 999;
 modulated_signal = 2 * fmmod(message_signal,fc,fs,Kf);
 demodulatd_signal = fmdemod(modulated_signal,fc,fs,Kf);
 
+%Plotting original message signal and then
+%the demodulated message signal so that I can 
+%compare them.
 figure(1)
 subplot(2,1,1);
 plot(t, message_signal)
 title("Original Message Signal in the Time Domain")
 xlabel("Time(s)")
 ylabel("m(t)")
+
 hold on
+
 subplot(2,1,2);
 plot(t,demodulatd_signal);
 title("Demodulated Signal in the Time Domain")
 xlabel("Time(s)")
 ylabel("m_d(t)")
 
-
+%Plotting the magnitude spectrum so that it can be
+%compared to the magnitude spectrum in question one.
 demodulated_signal_f = fftshift(fft(demodulatd_signal));
 n = length(message_signal) - 1;
 df = fs/n; 

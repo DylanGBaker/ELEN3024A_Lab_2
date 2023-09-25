@@ -32,13 +32,15 @@ white_noise_variance = 1/100;
 
 %Setting the last parameter in the wgn() function to 'linear' allows you
 %to use a variance.
-noise = wgn(1, length(modulated_signal), white_noise_variance,'linear'); %Generating white gaussian noise.
+%Generating white gaussian noise.
+noise = wgn(1, length(modulated_signal), white_noise_variance,'linear'); 
 
-%Filtering the noise to bandwidth that contains 99% of energy in modulated signal to make it a narrowband noise.
+%Filtering the noise to bandwidth that contains 99% of energy in 
+%modulated signal to make it a narrowband noise.
 filtered_noise = bandpass(noise, [1218 5852], fs);
 
-modulated_signal_with_noise = modulated_signal + filtered_noise; %adding noise to modulated signal.
-%modulated_signal_with_noise = modulated_signal + noise;
+%adding noise to modulated signal.
+modulated_signal_with_noise = modulated_signal + filtered_noise; 
 
 figure(3)
 plot(t, modulated_signal_with_noise);
