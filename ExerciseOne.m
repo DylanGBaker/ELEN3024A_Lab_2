@@ -30,7 +30,7 @@ plot(t,message_signal);
 title("Message Signal in the Time Domain")
 xlabel("Time(s)")
 ylabel("m(t)")
-set(gca,'XLim',[0 0.2]);
+set(gca,'XLim',[0 0.1]);
 
 %Plot of the message signal in the frequency domain from -1000 <= f <= 1000
 figure(2)
