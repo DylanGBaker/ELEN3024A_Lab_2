@@ -47,19 +47,16 @@ plot(t,modulated_signal)
 title("Modulated Signal in the Time Domain")
 xlabel("Time(s)")
 ylabel("u(t)")
-set(gca,'XLim',[0 0.02]);
+set(gca,'XTick',[0 0.02]);
 
 figure(2)
 plot(f, abs(modulated_signal_f)/n)
 title("Magnitude Spectrum of the Modulated Message Signal.")
-xlabel("Frequency(Hz)")
+xlabel("Time(s)")
 ylabel("|U(f)|")
 set(gca,'XLim',[-10000 10000]);
 
 figure(3)
-plot(f, unwrap(angle(modulated_signal_f)))
-title("Phase Spectrum of the Modulated Message Signal.")
-xlabel("Frequency(Hz)")
-ylabel("Phase of U(f)")
-set(gca,'XLim',[-5000 5000]);
+
+
 end

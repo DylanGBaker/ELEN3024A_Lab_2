@@ -1,10 +1,10 @@
 function ExerciseOne
 %High sampling rate for more accuracy in the plots.
 fs = 20000;
-t = 0:1/fs:0.2;
+t = 0:1/fs:0.1;
 
 index = 1;
-for i = 0:1/fs:0.2
+for i = 0:1/fs:0.1
     if (i <= 0.05)
         message_signal(index) = 4*sinc(200*i) + (10*i); %Conditional equation for 0 <= t <= 0.05
     elseif (i >= 0.05 && i <= 0.1)
