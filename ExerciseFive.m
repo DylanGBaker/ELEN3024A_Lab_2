@@ -14,7 +14,7 @@ for i = 0:1/fs:0.1
 end
 fc = 2000;
 Kf = 999;
-modulated_signal = fmmod(message_signal,fc,fs,Kf);
+modulated_signal = 2 * fmmod(message_signal,fc,fs,Kf);
 
 figure(6)
 obw(modulated_signal, fs);
