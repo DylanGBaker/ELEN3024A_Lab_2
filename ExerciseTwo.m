@@ -15,7 +15,7 @@ for i = 0:1/fs:0.1
     index = index + 1;
 end
 
-
+fc = 2000;
 %When looking at the plotted |M(f)| from question one, infinite frequencies
 %can be seen and this is due to the 10t and (1-10t) in the equations for
 %the message signal. Normally there is no fourier transform for a ramp
@@ -44,19 +44,25 @@ f = -fs/2:df:fs/2;
 
 figure(1)
 plot(t,modulated_signal)
-title("Modulated Signal in the Time Domain")
+title("Modulated Signal in the Time Domain Limited between 0 and 0.02")
 xlabel("Time(s)")
 ylabel("u(t)")
 set(gca,'XLim',[0 0.02]);
 
 figure(2)
+plot(t,modulated_signal)
+title("Modulated Signal in the Time Domain")
+xlabel("Time(s)")
+ylabel("u(t)")
+
+figure(3)
 plot(f, abs(modulated_signal_f)/n)
 title("Magnitude Spectrum of the Modulated Message Signal.")
 xlabel("Frequency(Hz)")
 ylabel("|U(f)|")
 set(gca,'XLim',[-10000 10000]);
 
-figure(3)
+figure(4)
 plot(f, unwrap(angle(modulated_signal_f)))
 title("Phase Spectrum of the Modulated Message Signal.")
 xlabel("Frequency(Hz)")
