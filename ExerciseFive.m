@@ -1,18 +1,4 @@
 function ExerciseFive
-demod_ut = fmdemod(ut,fc,fs,Kf);
-
-figure(2)
-plot(t,demod_ut);
-xlim([0 0.1])
-
-Uf = fftshift(fft(ut));
-n = length(ut) - 1;
-df = fs/n;
-f = -fs/2:df:fs/2;
-
-figure(3)
-plot(f,abs(Uf)/(length(Uf) - 1));
-
 noise = wgn(1, length(ut), 0.01,'linear');
 filtered_noise = bandpass(noise, [1000 1750], fs);
 

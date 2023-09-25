@@ -15,7 +15,7 @@ for i = 0:1/fs:0.1
     index = index + 1;
 end
 
-fc = 2000;
+
 %When looking at the plotted |M(f)| from question one, infinite frequencies
 %can be seen and this is due to the 10t and (1-10t) in the equations for
 %the message signal. Normally there is no fourier transform for a ramp
