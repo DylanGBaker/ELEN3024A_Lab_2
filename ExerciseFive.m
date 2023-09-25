@@ -16,7 +16,7 @@ fc = 2000;
 Kf = 999;
 modulated_signal = fmmod(message_signal,fc,fs,Kf);
 
-figure(50)
+figure(6)
 obw(modulated_signal, fs);
 
 %plotting the modulated signal with no noise to compare how the noise
