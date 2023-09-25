@@ -22,12 +22,4 @@ plot(t,demodulatd_signal, 'o', t, message_signal, 'b--');
 title("Demodulated Signal in the Time Domain")
 xlabel("Time(s)")
 ylabel("m_d(t)")
-
-% Uf = fftshift(fft(ut));
-% n = length(ut) - 1;
-% df = fs/n;
-% f = -fs/2:df:fs/2;
-% 
-% figure(3)
-% plot(f,abs(Uf)/(length(Uf) - 1));
 end

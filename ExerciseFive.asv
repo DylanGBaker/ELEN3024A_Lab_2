@@ -1,0 +1,33 @@
+function ExerciseFive
+fs = 15000;
+t = 0:1/fs:0.1;
+index = 1;
+for i = 0:1/fs:0.1
+    if (i <= 0.05)
+        message_signal(index) = 4*sinc(200*i) + (10*i);
+    elseif (i >= 0.05 && i <= 0.1)
+        message_signal(index) = 4*sinc(200*i) + (1 - 10*i);
+    else
+        message_signal(index) = 0;
+    end
+    index = index + 1;
+end
+fc = 2000;
+Kf = 999;
+
+%Variance = 1/(last digit of student number) = 1
+
+noise = wgn(1, length(ut), 0.01,'linear');
+filtered_noise = bandpass(noise, [1000 1750], fs);
+
+ut_with_noise = ut + filtered_noise;
+
+figure(3)
+plot(t, ut_with_noise);
+
+
+demod_noise_ut = fmdemod(ut_with_noise, fc, fs, Kf);
+figure(4)
+plot(t, demod_noise_ut);
+title("demodulated with noise")
+end

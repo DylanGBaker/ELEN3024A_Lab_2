@@ -4,11 +4,39 @@ function ExerciseThree
 frequency_modulation_index = 6.66;
 messsage_signal_bandwidth = 600;
 effective_bandwidth_of_modulated_signal = 2 * (frequency_modulation_index + 1) * messsage_signal_bandwidth;
-disp(effective_bandwidth_of_modulated_signal);
+disp("The effective bandwidth is: "+ effective_bandwidth_of_modulated_signal);
 
-%Using the equation Bf = (kf * carrier_amplitude)/fm, the ranges of
-%instantaneous frequencies can be calculated. We know Bf, carrier
-%amplituide and set the fm = 600Hz. kf will give the maximum frequency
-%deviation and hence the range of instantaneous frequencies. Calculation is
-%shown in the report but, kf = 999Hz.
+%Using fi(t) - fc = kf*m(t) we can find the range of instantaneous
+%frequency ranges by modifying the equation to be fi(t) = fc + kf*m(t).
+%We can then loop through the size of the message signals array and get
+%different values of m(t) and apply the above equation.
+
+fs = 10000;
+t = 0:1/fs:0.1;
+index = 1;
+for i = 0:1/fs:0.1
+    if (i <= 0.05)
+        message_signal(index) = 4*sinc(200*i) + (10*i);
+    elseif (i >= 0.05 && i <= 0.1)
+        message_signal(index) = 4*sinc(200*i) + (1 - 10*i);
+    else
+        message_signal(index) = 0;
+    end
+    index = index + 1;
+end
+
+kf = 999;
+fc = 2000;
+frequency_deviations = zeros(size(message_signal));
+for i = 1:length(message_signal)
+    frequency_deviations(i) = fc + kf*message_signal(i);
+end
+
+max_freq_deviation = max(frequency_deviations(:));
+min_freq_deviation = min(frequency_deviations(:));
+
+range_freq_deviations = max_freq_deviation - min_freq_deviation;
+
+disp("The range of instantaneous frequency deviations is: " + range_freq_deviations);
+
 end
