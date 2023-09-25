@@ -11,8 +11,7 @@ disp("The effective bandwidth is: "+ effective_bandwidth_of_modulated_signal);
 %We can then loop through the size of the message signals array and get
 %different values of m(t) and apply the above equation.
 
-fs = 10000;
-t = 0:1/fs:0.1;
+fs = 100000;
 index = 1;
 for i = 0:1/fs:0.1
     if (i <= 0.05)
@@ -33,7 +32,11 @@ for i = 1:length(message_signal)
 end
 
 max_freq_deviation = max(frequency_deviations(:));
+disp("Maximum frequency deviation: " + max_freq_deviation);
+disp("");
 min_freq_deviation = min(frequency_deviations(:));
+disp("Minimum frequency deviation: " + min_freq_deviation);
+disp("");
 
 range_freq_deviations = max_freq_deviation - min_freq_deviation;
 

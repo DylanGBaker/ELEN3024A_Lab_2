@@ -18,8 +18,28 @@ modulated_signal = 2 * fmmod(message_signal,fc,fs,Kf);
 demodulatd_signal = fmdemod(modulated_signal,fc,fs,Kf);
 
 figure(1)
-plot(t,demodulatd_signal, 'o', t, message_signal, 'b--');
+subplot(2,1,1);
+plot(t, message_signal)
+title("Original Message Signal in the Time Domain")
+xlabel("Time(s)")
+ylabel("m(t)")
+hold on
+subplot(2,1,2);
+plot(t,demodulatd_signal);
 title("Demodulated Signal in the Time Domain")
 xlabel("Time(s)")
 ylabel("m_d(t)")
+
+
+demodulated_signal_f = fftshift(fft(demodulatd_signal));
+n = length(message_signal) - 1;
+df = fs/n; 
+f = -fs/2:df:fs/2;
+
+figure(2)
+plot(f, abs(demodulated_signal_f)/n)
+title("Magnitude Spectrum of the Demodulated Message Signal.")
+xlabel("Frequency(Hz)")
+ylabel("|U(f)|")
+set(gca,'XLim',[-1000 1000]);
 end
